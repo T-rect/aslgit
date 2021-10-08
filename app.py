@@ -22,11 +22,16 @@ def predict_label(img_path, model, nama_model):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    nama_model = ''
-    model = load_model('model_MLNN.h5')
-    value_dari_indexhtml = [x for x in request.form.values()]
-    angka_sebenarnya, model_dl = value_dari_indexhtml
-    #print(angka_sebenarnya, model_dl)
+    model = np.nan
+    model_dl  = 'MLNN'
+    vals = []
+    vals = [x for x in request.form.values()]
+
+    #Ekstrak isi vals
+
+    angka_sebenarnya = vals[0]
+    model_dl = vals[1]
+
     if (model_dl == 'MLNN'):
         nama_model = 'MLNN'
         model = load_model('model_MLNN.h5')
