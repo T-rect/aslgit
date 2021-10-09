@@ -22,28 +22,26 @@ def predict_label(img_path, model, nama_model):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    model = np.nan
-    model_dl  = 'MLNN'
     vals = []
-    vals = [x for x in request.form.values()]
-
-    #Ekstrak isi vals
-
-    angka_sebenarnya = vals[0]
-    model_dl = vals[1]
-
-    if (model_dl == 'MLNN'):
-        nama_model = 'MLNN'
-        model = load_model('model_MLNN.h5')
-    if (model_dl == 'CNN'):
-        nama_model = 'CNN'
-        model = load_model('model_CNN.h5')
-    if (model_dl == 'CNNDO'   ):
-        nama_model = 'CNN with DO'
-        model = load_model('model_CNNDO.h5')
-    print('modelnya: ', nama_model, 'summary: ',  model.summary())
+    angka_sebenarnya = ''
+    model_dl = np.nan
 
     if request.method == 'POST':
+        vals = [x for x in request.form.values()]
+        angka_sebenarnya = vals[0]
+        model_dl = vals[1]
+
+        if (model_dl == 'MLNN'):
+            nama_model = 'MLNN'
+            model = load_model('model_MLNN.h5')
+        if (model_dl == 'CNN'):
+            nama_model = 'CNN'
+            model = load_model('model_CNN.h5')
+        if (model_dl == 'CNNDO'   ):
+            nama_model = 'CNN with DO'
+            model = load_model('model_CNNDO.h5')
+        print('modelnya: ', nama_model, 'summary: ',  model.summary())
+
         if request.files:
             image = request.files['image']
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], image.filename)
