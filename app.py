@@ -7,6 +7,7 @@ import os
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = './static/uploads/'
+root_folder = './'
 
 class_dict = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8:'8', 9: '9'}
 
@@ -33,13 +34,13 @@ def index():
 
         if (model_dl == 'MLNN'):
             nama_model = 'MLNN'
-            model = load_model('model_MLNN.h5')
+            model = load_model(root_folder + 'model_MLNN.h5')
         if (model_dl == 'CNN'):
             nama_model = 'CNN'
-            model = load_model('model_CNN.h5')
+            model = load_model(root_folder + 'model_CNN.h5')
         if (model_dl == 'CNNDO'   ):
             nama_model = 'CNN with DO'
-            model = load_model('model_CNNDO.h5')
+            model = load_model(root_folder + 'model_CNNDO.h5')
         print('modelnya: ', nama_model, 'summary: ',  model.summary())
 
         if request.files:
