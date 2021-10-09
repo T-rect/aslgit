@@ -8,8 +8,8 @@ import os
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = './static/uploads/'
 model_mlnn = load_model('model_MLNN.h5')
-model_cnn = load_model('model_CNN.h5')
-model_cnndo = load_model('model_CNNDO.h5')
+#model_cnn = load_model('model_CNN.h5')
+#model_cnndo = load_model('model_CNNDO.h5')
 
 class_dict = {0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8:'8', 9: '9'}
 
@@ -27,7 +27,7 @@ def predict_label(img_path, model, nama_model):
 def index():
     vals = []
     angka_sebenarnya = ''
-    model_dl = np.nan
+    model_dl = ''
 
     if request.method == 'POST':
         vals = [x for x in request.form.values()]
