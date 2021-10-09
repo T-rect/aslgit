@@ -46,12 +46,12 @@ def index():
             image = request.files['image']
             img_path = os.path.join(app.config['UPLOAD_FOLDER'], image.filename)
             image.save(img_path)
-            image.close()
             prediction = predict_label(img_path, model, nama_model)
             print(img_path)
             akurat = 'Akurat, sama dengan angka sebenarnya ' + angka_sebenarnya
             if str(angka_sebenarnya) != prediction:
                 akurat = 'Meleset, angka sebenarnya ' + angka_sebenarnya
+            print(akurat)
             return render_template('index.html', uploaded_image=image.filename, prediction=prediction, model=nama_model, akurat=akurat)
 
     return render_template('index.html')
