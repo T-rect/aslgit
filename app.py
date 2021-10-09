@@ -33,6 +33,7 @@ def index():
         vals = [x for x in request.form.values()]
         angka_sebenarnya = vals[0]
         model_dl = vals[1]
+        model = np.nan
 
         if (model_dl == 'MLNN'):
             nama_model = 'MLNN'
