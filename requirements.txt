@@ -3,3 +3,4 @@ tensorflow-cpu
 gunicorn
 pillow
 numpy
+python3-h5py
