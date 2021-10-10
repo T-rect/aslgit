@@ -34,13 +34,13 @@ def index():
 
         if (model_dl == 'MLNN'):
             nama_model = 'MLNN'
-            model = load_model('model_MLNN.h5')
+            model = load_model('./model_MLNN.h5')
         if (model_dl == 'CNN'):
             nama_model = 'CNN'
-            model = load_model('model_CNN.h5')
+            model = load_model('./model_CNN.h5')
         if (model_dl == 'CNNDO'   ):
             nama_model = 'CNN with DO'
-            model = load_model('model_CNNDO.h5')
+            model = load_model('./model_CNNDO.h5')
         print('modelnya: ', nama_model, 'summary: ',  model.summary())
 
         if request.files:
